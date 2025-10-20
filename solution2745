@@ -1,0 +1,6 @@
+class Solution {
+    public int longestString(int x, int y, int z) {
+        if(y > x) return (z + x + x + 1) * 2;
+        else return (z + y + y + 1) * 2;
+    }
+}
