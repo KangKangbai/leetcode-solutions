@@ -1,0 +1,17 @@
+//双指针法
+class Solution {
+    public int[] twoSum(int[] price, int target) {
+        int len = price.length;
+        int start = 0;
+        int end = len - 1;
+        while( price[start] + price[end] != target) {
+            if(price[start] + price[end] < target) start++;
+            else end--;
+        }
+
+        int[] res = new int[2];
+        res[0] = price[start];
+        res[1] = price[end];
+        return res;
+    }
+}
