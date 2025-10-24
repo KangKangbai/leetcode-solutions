@@ -1,0 +1,8 @@
+//推到公式可求出x和n的关系，然后判断x是不是整数
+class Solution {
+    public int pivotInteger(int n) {
+        int x = (int)Math.sqrt(n * (n + 1) / 2);
+        if(x * x == n * (n + 1) / 2) return x;
+        else return -1;
+    }
+}
