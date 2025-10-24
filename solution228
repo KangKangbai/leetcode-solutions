@@ -1,0 +1,34 @@
+//从前往后遍历，然后除了时间复杂度，一些细节处理上也会耗大量（甚至比时间复杂度大几倍）的时间
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> res = new ArrayList<>();
+        int len = nums.length;
+        if(len == 0) return res;
+        if(len == 1) {
+            res.add(Integer.toString(nums[0]));
+            return res;
+        }
+        int start = nums[0];
+        int temp = start;
+        for (int i = 1; i < len; i++) {
+            if (nums[i] == ++temp) continue;
+            else {
+                if (start == temp - 1) {
+                    res.add(Integer.toString(start));
+
+                } else {
+                    res.add(start + "->" + (temp - 1));
+                }
+                start = nums[i];
+                temp = nums[i];
+            }
+        }
+        if (start == temp) {
+            res.add(Integer.toString(start));
+
+        } else {
+            res.add(start + "->" + (temp));
+        }
+        return res;
+    }
+}
