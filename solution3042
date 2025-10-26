@@ -1,0 +1,21 @@
+//startsWith() 和 endsWith() 是 Java 字符串常用的内置方法，用来判断一个字符串是否以某个前缀或后缀开头 / 结尾。
+//它们的底层实现比 substring().equals() 高效得多，不会新建子串对象。
+class Solution {
+    public int countPrefixSuffixPairs(String[] words) {
+
+        int count = 0;
+        for(int i = 0; i < words.length - 1; i++) {
+            for(int j = i + 1; j < words.length; j++) {
+                if(isPrefixAndSuffix(words[i], words[j])) count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isPrefixAndSuffix(String str1, String str2) {
+        int len1 = str1.length();
+        int len2 = str2.length();
+        if(len1 > len2) return false;
+        return str2.startsWith(str1) && str2.endsWith(str1);
+    }
+}
