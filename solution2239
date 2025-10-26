@@ -1,0 +1,18 @@
+//遍历数组，定义两个变量保存最小值和判断正负
+class Solution {
+    public int findClosestNumber(int[] nums) {
+
+        int min = nums[0] > 0 ? nums[0] : - nums[0];
+        int key = nums[0];
+        for(int i = 0; i < nums.length; i++) {
+            int temp = nums[i] > 0 ? nums[i] : - nums[i];
+            if(min == temp) {
+                if(nums[i] > 0) key = nums[i];
+            } else if(min > temp) {
+                min = temp;
+                key = nums[i];
+            }
+        }
+        return key;
+    }
+}
