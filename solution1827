@@ -1,0 +1,18 @@
+//一次遍历，不难
+class Solution {
+    public int minOperations(int[] nums) {
+        int key = nums[0];
+        int len = nums.length;
+        int res = 0;
+        for(int i = 1; i < len; i++) {
+            if(key >= nums[i]) {
+                res = res + key + 1 - nums[i];
+                nums[i] = key + 1;
+                key = nums[i];
+            } else {
+                key = nums[i];
+            }
+        }
+        return res;
+    }
+}
