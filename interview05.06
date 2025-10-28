@@ -1,0 +1,13 @@
+//这个题用^按位异或运算，自动计算对应数的二进制，相同为0，不同为1，然后再用Integer.toBinaryString（）转成对应二进制的字符串，然后统计1的个数
+//也可以直接用bitCount（int）函数统计1的个数
+class Solution {
+    public int convertInteger(int A, int B) {
+        String string = Integer.toBinaryString(A^B);
+        int len = string.length();
+        int res = 0;
+        for(int i = 0; i < len; i++) {
+            if(string.charAt(i) == '1') res++;
+        }
+        return res;
+    }
+}
