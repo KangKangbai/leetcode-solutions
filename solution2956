@@ -1,0 +1,35 @@
+//先把两个数组排序，然后再找，会快一点
+class Solution {
+    public int[] findIntersectionValues(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int count1 = 0;
+        int count2 = 0;
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        for(int i = 0, j = 0; i < len1 && j < len2; i++) {
+            while(nums1[i] >= nums2[j]){
+                if(nums1[i] == nums2[j]) {
+                    count1++;
+                    break;
+                }
+                j++;
+                if(j >= len2) break;
+            }
+        }
+        for(int i = 0, j = 0; i < len2 && j < len1; i++) {
+            while(nums2[i] >= nums1[j]){
+                if(nums2[i] == nums1[j]) {
+                    count2++;
+                    break;
+                }
+                j++;
+                if(j >= len1) break;
+            }
+        }
+        int[] res = new int[2];
+        res[0] = count1;
+        res[1] = count2;
+        return res;
+    }
+}
